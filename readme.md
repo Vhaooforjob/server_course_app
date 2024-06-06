@@ -32,7 +32,7 @@
     const dotenv = require('dotenv');
     ```
      ```sh
-    Create info.env
+    Created file .env
     MONGO_USERNAME=<username>
     MONGO_PASSWORD=<password>
     MONGO_CLUSTER=<link>
