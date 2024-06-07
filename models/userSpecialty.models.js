@@ -3,7 +3,7 @@ const db = require('./../configs/db');
 const UserModel = require('./../models/users.models');
 const {Schema} = mongoose;
 
-const SpecialtySchema = Schema({
+const SpecialtySchema = new Schema({
     specialty_name: { type: String, required: true },
 });
 

@@ -3,7 +3,7 @@ const db = require('./../configs/db');
 const CourseModel = require('../models/courses.models');
 const {Schema} = mongoose;
 
-const EpisodeSchema = Schema({
+const EpisodeSchema = new Schema({
     title: { type: String, required: true },
     image_url: { type: String, required: true },
     video_url: { type: String, required: true },

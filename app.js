@@ -5,6 +5,7 @@ const courseRoutes = require('./routers/courses.routers');
 const courseCateRoutes = require('./routers/coursesCategory.routers');
 const episodesRoutes = require('./routers/episode.routers');
 const userSpecialtyRoutes = require('./routers/userSpecialty.routers');
+const favoriteCoursesRoutes = require('./routers/favoriteCourses.routers');
 const app = express();
 
 app.use(body_parser.json());
@@ -13,4 +14,5 @@ app.use('/courses', courseRoutes);
 app.use('/coursesCategory', courseCateRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/userSpecialty', userSpecialtyRoutes);
+app.use('/fav', favoriteCoursesRoutes);
 module.exports = app;
