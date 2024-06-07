@@ -56,6 +56,17 @@ exports.getUsers = async (req, res) => {
     }
 };
 
+exports.getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ status: false, message: "User not found" });
+        }
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 exports.createUser = async (req, res) => {
     const user = new User(req.body);
     try {

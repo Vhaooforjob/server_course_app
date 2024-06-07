@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const db = require('./../configs/db')
+const SpecialtyModel = require('../models/userSpecialty.models');
 const {Schema} = mongoose;
 
 const UserSchema = new Schema({
@@ -9,7 +10,8 @@ const UserSchema = new Schema({
     email: { type: String, unique: true, required: true },
     full_name: { type: String, required: true },
     join_date: { type: Date, default: Date.now },
-    image_url: { type: String }
+    image_url: { type: String },
+    specialty: { type: Schema.Types.ObjectId, ref: SpecialtyModel.modelName }
 });
 
 UserSchema.pre('save', async function(){
