@@ -6,7 +6,7 @@ const CousreService = require('../services/courses.services');
 
 exports.getCourses = async (req, res) => {
     try {
-        const courses = await Courses.find().populate('category_id').populate('user_id');
+        const courses = await Courses.find().populate('category_id').populate('user_id','username full_name');
         res.json(courses);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -21,7 +21,7 @@ exports.getCoursesLimit = async (req, res) => {
 
         const courses = await Courses.find()
             .populate('category_id')
-            .populate('user_id')
+            .populate('user_id','username full_name')
             .skip(skip)
             .limit(limit);
 
