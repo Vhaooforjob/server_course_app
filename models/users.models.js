@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const db = require('./../configs/db')
 const SpecialtyModel = require('../models/userSpecialty.models');
 const {Schema} = mongoose;
