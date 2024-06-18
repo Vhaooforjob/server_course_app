@@ -47,7 +47,7 @@ exports.searchReq = async (req, res) => {
             ]
         })
         .populate('specialty')
-        .select('-password -_id')
+        .select('-password')
         .limit(5)
         .sort({ join_date: -1 });
 
@@ -59,7 +59,7 @@ exports.searchReq = async (req, res) => {
         })
         .limit(5)
         .sort({ creation_date: -1 }) 
-        .populate('category_id', 'name')
+        .populate('category_id', 'category_name -_id')
         .populate('user_id', 'username full_name');
         
         const searchData = { users, courses };
