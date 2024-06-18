@@ -68,7 +68,7 @@ exports.getListCourses = async (req, res) => {
 
 exports.getCourseById = async (req, res) => {
     try {
-        const course = await Courses.findById(req.params.id).populate('category_id').lean();
+        const course = await Courses.findById(req.params.id).populate('category_id').populate('user_id', 'full_name _id').lean();
         if (!course) {
             return res.status(404).json({ message: 'Course not found' });
         }
