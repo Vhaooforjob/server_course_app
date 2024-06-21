@@ -3,7 +3,8 @@ const db = require('./../configs/db')
 const {Schema} = mongoose;
 
 const CourseCategorySchema = new Schema({
-    category_name: { type: String, required: true }
+    category_name: { type: String, required: true },
+    img: { type: String, },
 });
 
 const CourseCategoryModel = db.model('CourseCategory', CourseCategorySchema);
