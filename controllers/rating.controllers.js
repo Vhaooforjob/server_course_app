@@ -1,6 +1,7 @@
 const RatingModel = require('../models/rating.models');
 const CoursesModel = require('../models/courses.models');
 const UserModel = require('../models/users.models');
+const RatingService = require('../services/ratings.services');
 
 exports.getRating = async (req, res) => {
     try {
@@ -60,18 +61,8 @@ exports.getRatingByCourseId = async (req, res) => {
 exports.createRating = async (req, res) => {
     const { user_id, course_id, score, review } = req.body;
 
-    if (score < 1 || score > 5) {
-        return res.status(400).json({ message: 'Rating score must be between 1 and 5' });
-    }
-
     try {
-        const existingRating = await RatingModel.findOne({ user_id, course_id });
-        if (existingRating) {
-            return res.status(400).json({ message: 'User has already rated this course' });
-        }
-
-        const rating = new RatingModel({ user_id, course_id, score, review });
-        const newRating = await rating.save();
+        const newRating = await RatingService.createRating({ user_id, course_id, score, review });
         res.status(201).json(newRating);
     } catch (err) {
         res.status(400).json({ message: err.message });
