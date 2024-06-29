@@ -102,7 +102,7 @@ exports.getCourseByCateId = async (req, res) => {
             return res.status(404).json({ message: 'Course not found' });
         }
 
-        const course = await Courses.find({ 'category_id': cate._id }).lean();
+        const course = await Courses.find({ 'category_id': cate._id }).populate('user_id','full_name').lean();
         const count = course.length;
         res.json({ ...cate,count, course});
     } catch (err) {
