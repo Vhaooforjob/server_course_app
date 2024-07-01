@@ -6,8 +6,7 @@ exports.searchCourses = async (req, res) => {
     try {
         const courses = await CourseModel.find({
             $or: [
-                { title: { $regex: query, $options: 'i' } },
-                { description: { $regex: query, $options: 'i' } }
+                { title: { $regex: query, $options: 'i' } }
             ]
         })
         .sort({ creation_date: -1 }) 
