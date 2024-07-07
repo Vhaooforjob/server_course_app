@@ -28,7 +28,7 @@ exports.searchUsers = async (req, res) => {
                 { username: { $regex: query, $options: 'i' } },
                 { full_name: { $regex: query, $options: 'i' } }
             ]
-        }).populate('specialty').select('-password -_id').limit(5).sort({ join_date: -1 });
+        }).populate('specialty').select('-password').limit(5).sort({ join_date: -1 });
 
         res.json(users);
     } catch (err) {
