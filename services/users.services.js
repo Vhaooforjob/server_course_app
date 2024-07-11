@@ -1,6 +1,6 @@
 const UserModel = require('./../models/users.models');
-const jwt = require('jsonwebtoken')
-
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs'); 
 class UserService{
     static async registerUser(email, username, password, full_name) {
         try {
@@ -36,6 +36,10 @@ class UserService{
         }
     }
     static async updateUser(userId, updateData) {
+        if (updateData.password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(updateData.password, salt);
+        }
         try {
             return await UserModel.findByIdAndUpdate(userId, updateData, { new: true });
         } catch (error) {

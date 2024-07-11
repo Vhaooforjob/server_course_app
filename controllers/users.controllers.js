@@ -79,10 +79,10 @@ exports.createUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(updatedUser);
+        const updatedUser = await UserService.updateUser(req.params.id, req.body);
+        res.status(200).json(updatedUser);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ status: false, message: err.message });
     }
 };
 
