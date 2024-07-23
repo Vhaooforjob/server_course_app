@@ -8,6 +8,7 @@ const userSpecialtyRouters = require('./routers/userSpecialty.routers');
 const favoriteCoursesRouters = require('./routers/favoriteCourses.routers');
 const ratesRouters = require('./routers/rating.routers');
 const searchRoutes = require('./routers/search.routers');
+const commentsRoutes = require('./routers/comments.routers');
 const app = express();
 
 app.use(body_parser.json());
@@ -19,4 +20,5 @@ app.use('/api/userSpecialty', userSpecialtyRouters);
 app.use('/api/fav', favoriteCoursesRouters);
 app.use('/api/rate', ratesRouters);
 app.use('/api/search', searchRoutes);
+app.use('/api/comment', commentsRoutes);
 module.exports = app;

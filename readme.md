@@ -107,4 +107,13 @@
    - Get    api/search?query=?
    - Get    api/search/courses?query=?
    - Get    api/search/users?query=?
+
+   API COMMENT: 
+   - Get    api/comment/ 
+   - Get    api/comment/:id
+   - Get    api/comment/user/:id 
+   - Get    api/comment/episode/:id
+   - Post   api/comment/
+   - Put    api/comment/:id
+   - Del    api/comment/:id
     ```    
