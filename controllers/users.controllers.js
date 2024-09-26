@@ -56,15 +56,14 @@ exports.getUsers = async (req, res) => {
     }
 };
 
+// Get user by ID
 exports.getUserById = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).populate('specialty', 'specialty_name _id');
-        if (!user) {
-            return res.status(404).json({ status: false, message: "User not found" });
-        }
+        const token = req.header('Authorization').replace('Bearer ', ''); // Extract the token
+        const user = await UserService.getUserById(token, req.params.id); // Pass token to the service
         res.json(user);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(401).json({ message: err.message }); // Handle token validation errors
     }
 };
 exports.createUser = async (req, res) => {
